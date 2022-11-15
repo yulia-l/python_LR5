@@ -15,20 +15,22 @@ newPosition.name = input("Название: ")
 newPosition.pages = input("Кол-во страниц: ")
 newPosition.style = input("Стиль: ")
 newPosition.price = input("Цена: ")
-print(newPosition.price)
+#print(newPosition.price)
 
-fileIn = 'fileIn.csv'
-fileOut = 'fileOut.csv'
+
+
+fileForSave = 'fileIn.txt'
+#dataForSave = ''
 
 try:
-    with open(fileIn, 'r') as f:
-        file_content = f.read()
-        print("Чтение файла " + fileIn)
-    if not file_content:
-        print("Файл {} пуст " + fileIn)
-    with open(fileOut, 'w') as dest:
-        dest.write(file_content)
-        print("Записан файл " + fileOut)
+    with open(fileForSave, 'a+', encoding='utf-8') as f:
+        fileReading = f.read()
+        print("Чтение файла " + fileReading)
+    # if not fileReading:
+    #     print("Файл {} пуст " + fileReading)
+        f.write('newPosition')
+        s = f.readlines()
+        print("Записаны данные:\n" + s)
 except IOError as e:
     print("I/O error({0}): {1}".format(e.errno, e.strerror))
 except:
